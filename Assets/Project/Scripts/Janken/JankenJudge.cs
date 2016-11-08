@@ -83,12 +83,6 @@ public class JankenJudge : SingletonMonoBehaviour<JankenJudge> {
 		}
 
 
-		//transform.rotation = Quaternion.Euler (new Vector3 (0,transform.rotation.eulerAngles.y, 0));
-
-		//Quaternion rot = Quaternion.LookRotation (transform.position, hand1.transform.position);
-
-//		rot = Quaternion.Euler (new Vector3 (0, rot.eulerAngles.y, 0));
-//		transform.rotation = rot;
 		Show (true);
 		ShowJudge (false);
 		ShowIntro (true);
