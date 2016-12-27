@@ -57,4 +57,11 @@ public class GameMan : MonoBehaviour
 			NetMan.singleton.StartClient();
 		}
 	}
+
+    void OnDestroy(){
+        if (FileUtils.GetPlayerType() == PlayerType.HOST)
+            NetMan.singleton.StopHost();
+        else
+            NetMan.singleton.StopClient();
+    }
 }
