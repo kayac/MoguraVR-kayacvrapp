@@ -30,7 +30,7 @@ public class NetMan : NetworkManager {
 	void Update () {
 		if (Input.GetKey (KeyCode.Return)) {
 			if (state == State.FAILED) {
-				ReloadScene ("Sample1");
+				ReloadScene ("Sample-RemoteConnectAvatar");
 			}
 		}
 	}
@@ -57,13 +57,10 @@ public class NetMan : NetworkManager {
 			prefab = playerPrefab;
 			break;
 		}
-
+            
 		GameObject player = GameObject.Instantiate(prefab, startPoint.position, startPoint.rotation) as GameObject;
 		NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
-		if (playerOVR != null) {
-			playerOVR.transform.position = startPoint.position;
-			playerOVR.transform.rotation = startPoint.rotation;
-		}
+
 	}
 
 	public override void OnClientConnect(NetworkConnection conn)
@@ -76,6 +73,7 @@ public class NetMan : NetworkManager {
 		PlayerInfoMessage info = new PlayerInfoMessage();
 		info.nickName = "a";
 		Debug.Log ("on Client==="+playerType);
+		Transform startPoint = null;
 		switch (playerType)
 		{
 		case PlayerType.HOST:
